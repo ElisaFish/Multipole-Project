@@ -1,0 +1,32 @@
+
+#
+# Makefile settings
+#
+
+CC = g++
+
+#
+# objects and dependencies
+#
+
+OBJS = mainrun.o multipolePotentials.o
+HEAD = multipolePotentials.h
+
+$(OBJS) : $(HEAD)
+
+#
+# make the application
+#
+
+#LIBFITS  = -L/Users/lisa/source/cfitsio -lcfitsio
+
+mainrun : $(OBJS) $(HEAD)
+	$(CC) -o mainrun $(OBJS) -lm
+
+#
+# specify how to compile
+#
+
+.cpp.o:
+	$(CC) -O -c $<
+
